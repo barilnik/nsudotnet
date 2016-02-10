@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D9CD99BD-6B4A-4933-8587-CA1157159CA7}</ProjectGuid>
+    <ProjectGuid>{7C754185-8A8B-4C2B-AE0C-A64CA4CC088A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NumberGuesser</RootNamespace>
