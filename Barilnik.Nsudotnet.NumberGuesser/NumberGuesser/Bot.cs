@@ -18,7 +18,7 @@ namespace NumberGuesser
         public int generateNumber()
         {
             Random random = new Random();
-            int randomNumber = random.Next( 101 );
+            int randomNumber = random.Next( 101 ); //Может быть есть смысл сохранять глобально, чтобы не передавать в другие методы 
 
             return randomNumber;
         }
