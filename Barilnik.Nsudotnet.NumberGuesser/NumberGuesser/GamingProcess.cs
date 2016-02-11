@@ -9,15 +9,46 @@ namespace NumberGuesser
     class GamingProcess
     {
         public static String username;
+        public static int userNumber = 0;
 
         static void Main(string[] args)
+        {
+            prepareGame();
+
+            Bot bot = new Bot();
+            bot.generateNumber();
+            //Вывод на экран: отгадай число, которое я загадал
+
+            userNumber = Console.Read();
+
+            int countAttempt = 1;
+            bool flag = true;
+
+            while( flag )
+            {
+                if ( countAttempt.Equals( 4 ) )
+                {
+                    bot.callNames();
+                }
+
+                if ( !checkUserNumber( userNumber ) )
+                {
+                    bot.giveHint( userNumber );
+                    countAttempt++;
+                }
+                else
+                {
+                    flag = false;
+                    finish();
+                }
+            }
+        }
+
+        public static void prepareGame()
         {
             initNewUser();
 
             Console.WriteLine("Hi! I can play in game with you! Ha-ha-ha-ha...");
-            //Вывод на экран: отгадай число, которое я загадал
-            Bot bot = new Bot();
-            int botNumber = bot.generateNumber();
         }
 
         public static void initNewUser()
@@ -26,9 +57,14 @@ namespace NumberGuesser
             username = Console.ReadLine();
         }
 
-        public static bool checkUserNamber()
+        public static bool checkUserNumber( int userNumber )
         {
-            return true;
+            return userNumber.Equals(Bot.botNumber);
+        }
+
+        public static void finish()
+        {
+            Console.Write("YOU WINS");
         }
     }
 }

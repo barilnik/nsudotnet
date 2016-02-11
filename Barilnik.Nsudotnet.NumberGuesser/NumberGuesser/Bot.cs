@@ -15,20 +15,20 @@ namespace NumberGuesser
             "You’re a loser, I hate you", "What’s the matter, cat got your tongue?",
             "Get lost, I am tired of hearing from you." };
 
-        public int generateNumber()
+        public static int botNumber = 0;
+
+        public void generateNumber()
         {
             Random random = new Random();
-            int randomNumber = random.Next( 101 ); //Может быть есть смысл сохранять глобально, чтобы не передавать в другие методы 
-
-            return randomNumber;
+            botNumber = random.Next( 101 );
         }
 
-        public bool checkEquallyNumbers( int botNumber, int humanNumber )
+/*        public bool checkEquallyNumbers( int humanNumber )
         {
             return botNumber.Equals( humanNumber );
-        }
+        } */
 
-        public String giveHint( int botNumber, int humanNumber )
+        public String giveHint(  int humanNumber )
         {
             if( botNumber > humanNumber )
             {
