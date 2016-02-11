@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace NumberGuesser
 {
-    class Program
+    class GamingProcess
     {
-        static void Main(string[] args)
-        {
-        }
+
     }
 }
