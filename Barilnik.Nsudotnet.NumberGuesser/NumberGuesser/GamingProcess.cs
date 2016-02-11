@@ -17,30 +17,31 @@ namespace NumberGuesser
             Bot bot = new Bot();
             bot.generateNumber();
             //Вывод на экран: отгадай число, которое я загадал
-
-            int countAttempt = 1;
+      
             bool flag = true;
+            Results results = new Results();
 
-            while( flag )
+            while ( flag )
             {
                 int userNumber = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine("Attempt = " + countAttempt);
-
-                if ( (countAttempt % 4) == 0  )
+                if ( (results.getCountAttempt() % 4) == 0  )
                 {
-                    bot.callNames();
+                    bot.callNames( username );
                 }
 
                 if ( !checkUserNumber( userNumber ) )
                 {
-                    bot.giveHint( userNumber );
-                    countAttempt++;
+                    Console.WriteLine( bot.giveHint( userNumber ) );
+
+                    results.increaseCurrentAttempt();
+                    results.saveHistoryAttempt(userNumber, bot.giveHint(userNumber));
                 }
                 else
                 {
                     flag = false;
-                    finish();
+                    finish( results.getCountAttempt() );
+                    Console.ReadLine();
                 }
             }
         }
@@ -63,9 +64,11 @@ namespace NumberGuesser
             return userNumber == Bot.botNumber;
         }
 
-        public static void finish()
+        public static void finish( int countAttempt )
         {
-            Console.Write("YOU WINS");
+            Console.WriteLine("YOU WINS");
+            Console.WriteLine("Your attempt: " + countAttempt );
+            Console.WriteLine();
         }
     }
 }

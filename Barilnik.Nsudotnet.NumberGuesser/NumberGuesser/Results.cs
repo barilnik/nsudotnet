@@ -9,16 +9,16 @@ namespace NumberGuesser
 {
     class Results
     {
-        private int attempt = 0;
+        private int countAttempt = 1;
         //public Hashtable history = new Hashtable();
         private Dictionary< int, string > history = new Dictionary< int, string >();
 
-        private void increaseCurrentAttempt()
+        public void increaseCurrentAttempt()
         {
-            attempt++;
+            countAttempt++;
         }
 
-        private void saveHistoryAttempt( int newNumber, string equally )
+        public void saveHistoryAttempt( int newNumber, string equally )
         {
             history.Add( newNumber, equally );
         }
@@ -26,6 +26,11 @@ namespace NumberGuesser
         public IDictionary getHistory()
         {
             return history;
+        }
+
+        public int getCountAttempt()
+        {
+            return countAttempt;
         }
     }
 }

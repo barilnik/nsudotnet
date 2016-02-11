@@ -21,8 +21,6 @@ namespace NumberGuesser
         {
             Random random = new Random();
             botNumber = random.Next( 101 );
-
-            Console.WriteLine( "Random Number = " + botNumber);
         }
 
 /*        public bool checkEquallyNumbers( int humanNumber )
@@ -30,21 +28,21 @@ namespace NumberGuesser
             return botNumber.Equals( humanNumber );
         } */
 
-        public void giveHint(  int humanNumber )
+        public string giveHint(  int humanNumber )
         {
             if( botNumber < humanNumber )
             {
-                Console.WriteLine( THIS_IS_BIG_NUMBER );
+                return THIS_IS_BIG_NUMBER ;
             }
             else
             {
-                Console.WriteLine( THIS_IS_SMALL_NUMBER );
+                return THIS_IS_SMALL_NUMBER;
             }
         }
 
-        public void callNames()
+        public void callNames( string username )
         {        
-            Console.WriteLine( swearing[ new Random().Next( 0, swearing.Length ) ] );
+            Console.WriteLine( username + "!" + swearing[ new Random().Next( 0, swearing.Length ) ] );
         }
     }
 }
