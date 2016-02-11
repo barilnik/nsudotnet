@@ -9,7 +9,6 @@ namespace NumberGuesser
     class GamingProcess
     {
         public static String username;
-        public static int userNumber = 0;
 
         static void Main(string[] args)
         {
@@ -19,14 +18,16 @@ namespace NumberGuesser
             bot.generateNumber();
             //Вывод на экран: отгадай число, которое я загадал
 
-            userNumber = Console.Read();
-
             int countAttempt = 1;
             bool flag = true;
 
             while( flag )
             {
-                if ( countAttempt.Equals( 4 ) )
+                int userNumber = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Attempt = " + countAttempt);
+
+                if ( (countAttempt % 4) == 0  )
                 {
                     bot.callNames();
                 }
@@ -59,7 +60,7 @@ namespace NumberGuesser
 
         public static bool checkUserNumber( int userNumber )
         {
-            return userNumber.Equals(Bot.botNumber);
+            return userNumber == Bot.botNumber;
         }
 
         public static void finish()
