@@ -49,7 +49,6 @@ namespace NumberGuesser
         public static void prepareGame()
         {
             initNewUser();
-
             Console.WriteLine("Hi! I can play in game with you! Ha-ha-ha-ha...");
         }
 
