@@ -10,22 +10,22 @@ namespace NumberGuesser
     class Results
     {
         private int countAttempt = 1;
-        //public Hashtable history = new Hashtable();
-        private Dictionary< int, string > history = new Dictionary< int, string >();
+        private List< string > historyGame = new List< string >();
 
         public void increaseCurrentAttempt()
         {
             countAttempt++;
         }
 
-        public void saveHistoryAttempt( int newNumber, string equally )
+        public void savedHistoryAttempt( string attempt )
         {
-            history.Add( newNumber, equally );
-        }
+            historyGame.Add( attempt );
+            Console.WriteLine(" Сохраненная аттемпта: " + attempt);
+        } 
 
-        public IDictionary getHistory()
+        public List<string> getHistory()
         {
-            return history;
+            return historyGame;
         }
 
         public int getCountAttempt()

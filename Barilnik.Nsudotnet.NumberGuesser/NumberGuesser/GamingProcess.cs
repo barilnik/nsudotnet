@@ -35,12 +35,13 @@ namespace NumberGuesser
                     Console.WriteLine( bot.giveHint( userNumber ) );
 
                     results.increaseCurrentAttempt();
-                    results.saveHistoryAttempt(userNumber, bot.giveHint(userNumber));
+                    results.savedHistoryAttempt( userNumber + " " + bot.giveHint( userNumber ) );
+                    //results.saveHistoryAttempt(userNumber, bot.giveHint(userNumber));
                 }
                 else
                 {
                     flag = false;
-                    finish( results.getCountAttempt() );
+                    finish( results.getCountAttempt(), results.getHistory() );
                     Console.ReadLine();
                 }
             }
@@ -63,11 +64,18 @@ namespace NumberGuesser
             return userNumber == Bot.botNumber;
         }
 
-        public static void finish( int countAttempt )
+        public static void finish( int countAttempt, List<string> historyGame )
         {
             Console.WriteLine("YOU WINS");
             Console.WriteLine("Your attempt: " + countAttempt );
+
+            historyGame.ForEach(print);
             Console.WriteLine();
+        }
+
+        public static void print( string attempt )
+        {
+            Console.WriteLine( attempt );
         }
     }
 }
