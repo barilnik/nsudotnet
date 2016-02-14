@@ -14,21 +14,26 @@ namespace NumberGuesser
         {
             prepareGame();
 
+            Results results = new Results();
+            results.startTimer();
+
             Bot bot = new Bot();
             bot.generateNumber();
-            //Вывод на экран: отгадай число, которое я загадал
-      
-            bool flag = true;
-            Results results = new Results();
 
+            Console.WriteLine( "Guess my number!" );
+
+            bool flag = true;
             while ( flag )
             {
-                int userNumber = Convert.ToInt32(Console.ReadLine());
-
-                if ( (results.getCountAttempt() % 4) == 0  )
+                if( ( results.getCountAttempt() % 4 ) == 0 )
                 {
-                    bot.callNames( username );
+                    bot.callNames(username);
                 }
+
+                string userString = Console.ReadLine();
+                checkExitGame( userString );
+
+                int userNumber = Convert.ToInt32( userString );
 
                 if ( !checkUserNumber( userNumber ) )
                 {
@@ -36,12 +41,13 @@ namespace NumberGuesser
 
                     results.increaseCurrentAttempt();
                     results.savedHistoryAttempt( userNumber + " " + bot.giveHint( userNumber ) );
-                    //results.saveHistoryAttempt(userNumber, bot.giveHint(userNumber));
                 }
                 else
                 {
                     flag = false;
-                    finish( results.getCountAttempt(), results.getHistory() );
+                    results.endTimer();
+
+                    finish( results.getCountAttempt(), results.getHistory(), results.getGamingTime() );
                     Console.ReadLine();
                 }
             }
@@ -64,13 +70,23 @@ namespace NumberGuesser
             return userNumber == Bot.botNumber;
         }
 
-        public static void finish( int countAttempt, List<string> historyGame )
+        public static void checkExitGame( string userString )
         {
-            Console.WriteLine("YOU WINS");
-            Console.WriteLine("Your attempt: " + countAttempt );
+            if (userString == "q")
+            {
+                Console.WriteLine("Sorry, I have to go... Goodbye!");
+                Console.ReadLine();
+                Environment.Exit(0);
+            }
+        }
 
+        public static void finish( int countAttempt, List<string> historyGame, TimeSpan gamingTime )
+        {
+            Console.WriteLine( "YOU WINS" );
+            Console.WriteLine ("Your attempt: " + countAttempt );
+            Console.WriteLine( "Your Time: " + gamingTime.Minutes.ToString() + " minutes");
+            Console.WriteLine( "Your History Game: " );
             historyGame.ForEach(print);
-            Console.WriteLine();
         }
 
         public static void print( string attempt )

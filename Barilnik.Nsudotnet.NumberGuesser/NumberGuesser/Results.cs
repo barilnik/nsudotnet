@@ -11,6 +11,23 @@ namespace NumberGuesser
     {
         private int countAttempt = 1;
         private List< string > historyGame = new List< string >();
+        private DateTime startTime;
+        private DateTime endTime;
+
+        public void startTimer()
+        {
+            startTime = DateTime.Now;
+        }
+
+        public void endTimer()
+        {
+            endTime = DateTime.Now;
+        }
+
+        public TimeSpan getGamingTime()
+        {
+            return endTime - startTime;
+        }
 
         public void increaseCurrentAttempt()
         {
@@ -20,7 +37,6 @@ namespace NumberGuesser
         public void savedHistoryAttempt( string attempt )
         {
             historyGame.Add( attempt );
-            Console.WriteLine(" Сохраненная аттемпта: " + attempt);
         } 
 
         public List<string> getHistory()

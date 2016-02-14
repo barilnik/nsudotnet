@@ -8,8 +8,8 @@ namespace NumberGuesser
 {
     class Bot
     {
-        public const String THIS_IS_BIG_NUMBER = "Введенно число больше загаданного";
-        public const String THIS_IS_SMALL_NUMBER = "Введенно число меньше загаданного";
+        public const String THIS_IS_BIG_NUMBER = "Введенное число больше загаданного";
+        public const String THIS_IS_SMALL_NUMBER = "Введенное число меньше загаданного";
 
         public static string[] swearing = { "Shut up, you div!", "is such a weirdo",
             "You’re a loser, I hate you", "What’s the matter, cat got your tongue?",
@@ -22,11 +22,6 @@ namespace NumberGuesser
             Random random = new Random();
             botNumber = random.Next( 101 );
         }
-
-/*        public bool checkEquallyNumbers( int humanNumber )
-        {
-            return botNumber.Equals( humanNumber );
-        } */
 
         public string giveHint(  int humanNumber )
         {
