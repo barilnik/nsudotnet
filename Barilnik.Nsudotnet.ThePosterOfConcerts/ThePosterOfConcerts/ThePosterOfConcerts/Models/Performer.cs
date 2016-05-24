@@ -10,7 +10,7 @@ namespace ThePosterOfConcerts.Models
     {
         public int PerformerID { get; set; }
         public String Name { get; set; }
-        public Biography biography { get; set; }
+        public Biography Biography { get; set; }
         public String Country { get; set; }
         public String Genre { get; set; }
     }

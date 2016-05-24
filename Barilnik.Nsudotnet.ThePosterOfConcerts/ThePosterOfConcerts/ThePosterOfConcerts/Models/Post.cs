@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ThePosterOfConcerts.Models
 {
-    class Biography
+    class Post
     {
-        public int BiographyID { get; set; }
         public int PerformerID { get; set; }
-        public String PerformerBiography { get; set; }
+        public int BiographyID { get; set; }
+        public virtual Performer Performer { get; set; }
+        public virtual Biography Biography { get; set; }
     }
 }
