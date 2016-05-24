@@ -36,7 +36,8 @@ namespace ThePosterOfConcerts.DAL
                 new Post { PerformerID = 2, BiographyID = 2 },
                 new Post { PerformerID = 3, BiographyID = 3 }
             };
-            
+            post.ForEach(p => context.Post.Add(p));
+            context.SaveChanges(); 
         }
     }
 }

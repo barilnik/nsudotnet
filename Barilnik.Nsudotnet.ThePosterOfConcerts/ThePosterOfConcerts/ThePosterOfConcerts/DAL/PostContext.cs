@@ -15,6 +15,7 @@ namespace ThePosterOfConcerts.DAL
     {
         public DbSet<Performer> Performer { get; set; }
         public DbSet<Biography> Biography { get; set; }
+        public DbSet<Post> Post { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
