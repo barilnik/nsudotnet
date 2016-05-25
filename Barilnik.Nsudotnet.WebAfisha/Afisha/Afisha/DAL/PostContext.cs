@@ -17,6 +17,16 @@ namespace Afisha.DAL
         public DbSet<Biography> Biographies { get; set; }
         public DbSet<Post> Posts { get; set; }
 
+        static PostContext()
+        {
+            Database.SetInitializer<PostContext>(new PostInitializer());
+        }
+
+        public PostContext() : base("DefaultConnection")
+        {
+
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

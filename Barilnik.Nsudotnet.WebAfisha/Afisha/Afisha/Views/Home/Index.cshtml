@@ -13,24 +13,31 @@
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Name", "Index")
+               Имя исполнителя
+            </th>
+            <th>
+                Дата выступления
+            </th>
+            <th>
+                Место выступления
             </th>
         </tr>
         
-        <tr>
+        
             @foreach (var item in Model)
             {
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Place)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </td>
+                </tr>
             }
-        </tr>
 
     </table>
 </div>

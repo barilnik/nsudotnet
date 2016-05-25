@@ -14,6 +14,12 @@ namespace Afisha.Controllers
 
         public ActionResult Index()
         {
+            //return View();
+            /*var performers = from p in db.Performers select p;
+            return View(performers);*/
+
+
+            
             var biography = new List<Biography>
             {
                 new Biography { PerformerBiography = "COOL BIOGRAPHY" },

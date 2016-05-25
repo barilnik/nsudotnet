@@ -18,7 +18,7 @@ namespace Afisha.Controllers
         // GET: Performers
         public ActionResult Index()
         {
-            /*
+            
             var biography = new List<Biography>
             {
                 new Biography { PerformerBiography = "COOL BIOGRAPHY" },
@@ -31,8 +31,8 @@ namespace Afisha.Controllers
                 new Performer { Name = "Nickelback", Country = "USA", Genre = "Rock" , Biography = biography[1] },
                 new Performer { Name = "Byonce", Country = "USA", Genre = "POP" , Biography = biography[2] }
             };
-            return View(performers);*/
-            return View(db.Performers.ToList());
+            return View(performers);
+            //return View(db.Performers.ToList());
         }
         
         // GET: Performers/Details/5
